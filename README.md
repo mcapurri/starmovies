@@ -1,3 +1,11 @@
+# Please note
+
+The given API ( https://graphql.org/swapi-graphql ) resulted not to be able to provide the data required.
+I found that to be a common problem that other developers had in the past. The valid API to use is https://swapi-graphql.netlify.app/.netlify/functions/index
+
+Source https://github.com/graphql/swapi-graphql/issues/184
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
