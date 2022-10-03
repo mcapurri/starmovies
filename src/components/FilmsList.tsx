@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import formatDate from "../utils";
 
 const GET_MOVIES = gql`
   {
@@ -20,12 +21,14 @@ interface Film {
   episodeID: string;
   director: string;
   releaseDate: string;
+  producers: [string];
+  openingCrawl: string;
 }
 
 export const FilmsList = () => {
   const { loading, error, data } = useQuery(GET_MOVIES);
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <p>Loading..</p>;
   if (error) return <p>Something went wrong</p>;
 
   return (
@@ -33,7 +36,7 @@ export const FilmsList = () => {
       {data.allFilms.films.map((film: Film, key: number) => (
         <div
           key={`film-list-${key}`}
-          style={{ borderBottom: "1px solid black", padding: "10px 20px" }}
+          style={{ border: "0.6px solid gray", padding: "10px 20px" }}
         >
           <a
             href={`/films/${film.id}`}
@@ -46,8 +49,15 @@ export const FilmsList = () => {
           >
             {film.title}
           </a>
-          <div>{film.episodeID}</div>
-          <div>{film.releaseDate}</div>
+          <p
+            style={{
+              fontSize: 14,
+            }}
+          >
+            Episode ID {film.episodeID}
+          </p>
+          <p>{formatDate(new Date(film.releaseDate))}</p>
+
           <div>{film.director}</div>
         </div>
       ))}
