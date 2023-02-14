@@ -21,7 +21,7 @@ interface Film {
   episodeID: string;
   director: string;
   releaseDate: string;
-  producers: [string];
+  producers: string[];
   openingCrawl: string;
 }
 
